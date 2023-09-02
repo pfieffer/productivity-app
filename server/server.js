@@ -23,6 +23,7 @@ app.get("/", (req, res) => {
     res.send("Hello World!");
 });
 
+const AuthRouter = require("./routes/auth.route");
 const ActivityRouter = require("./routes/activity.route");
 
 /* Connecting to the database and then starting the server. */
@@ -35,5 +36,6 @@ mongoose
         console.log(err);
     });
 
+app.use("/api/auth", AuthRouter);
 /* Telling the application to use the ActivityRouter for any requests that start with "/api". */
 app.use("/api", ActivityRouter);
